@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  body { font-family: 'Work Sans', sans-serif; }
+  h1, h2, h3, .serif-font { font-family: 'Noto Serif', serif; }
+}
+
+@layer utilities {
+  .glass-header {
+    background: rgba(252, 249, 245, 0.8);
+    backdrop-filter: blur(20px);
+  }
+}

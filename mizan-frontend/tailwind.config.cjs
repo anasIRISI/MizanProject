@@ -1,0 +1,73 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx,html}",
+  ],
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+              "on-tertiary-fixed-variant": "#484646",
+              "inverse-primary": "#ffb59f",
+              "inverse-surface": "#31302e",
+              "on-tertiary-fixed": "#1c1b1b",
+              "surface-bright": "#fcf9f5",
+              "on-primary": "#ffffff",
+              "on-surface": "#1c1c1a",
+              "tertiary-fixed": "#e6e1e1",
+              "on-error-container": "#93000a",
+              "primary-container": "#d2420d",
+              "on-error": "#ffffff",
+              "primary": "#aa3000",
+              "primary-fixed": "#ffdbd0",
+              "surface-container-lowest": "#ffffff",
+              "secondary": "#006a68",
+              "primary-fixed-dim": "#ffb59f",
+              "secondary-fixed": "#8df3f0",
+              "on-primary-fixed-variant": "#852300",
+              "surface-variant": "#e5e2de",
+              "on-tertiary-container": "#fffbff",
+              "on-primary-container": "#fffbff",
+              "tertiary-container": "#767474",
+              "inverse-on-surface": "#f3f0ec",
+              "on-primary-fixed": "#3a0a00",
+              "secondary-fixed-dim": "#6fd7d4",
+              "on-background": "#1c1c1a",
+              "surface-tint": "#ae3100",
+              "surface-container-high": "#ebe8e4",
+              "tertiary": "#5d5b5b",
+              "tertiary-fixed-dim": "#c9c6c5",
+              "on-secondary-fixed": "#00201f",
+              "on-secondary-fixed-variant": "#00504e",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#dcdad6",
+              "surface-container-low": "#f6f3ef",
+              "surface-container": "#f0ede9",
+              "surface-container-highest": "#e5e2de",
+              "error": "#ba1a1a",
+              "background": "#fcf9f5",
+              "outline-variant": "#e3bfb4",
+              "on-surface-variant": "#5a4139",
+              "error-container": "#ffdad6",
+              "outline": "#8e7068",
+              "surface": "#fcf9f5",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#006e6d",
+              "secondary-container": "#8af1ed"
+      },
+      "borderRadius": {
+              "DEFAULT": "0.125rem",
+              "lg": "0.25rem",
+              "xl": "0.5rem",
+              "full": "0.75rem"
+      },
+      "fontFamily": {
+              "headline": ["Noto Serif"],
+              "body": ["Work Sans"],
+              "label": ["Work Sans"]
+      }
+    },
+  },
+  plugins: [],
+}
