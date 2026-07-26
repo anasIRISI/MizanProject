@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mizan Legal AI - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&amp;family=Work+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#484646",
+                    "inverse-primary": "#ffb59f",
+                    "inverse-surface": "#31302e",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "surface-bright": "#fcf9f5",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1c1c1a",
+                    "tertiary-fixed": "#e6e1e1",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#d2420d",
+                    "on-error": "#ffffff",
+                    "primary": "#aa3000",
+                    "primary-fixed": "#ffdbd0",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#006a68",
+                    "primary-fixed-dim": "#ffb59f",
+                    "secondary-fixed": "#8df3f0",
+                    "on-primary-fixed-variant": "#852300",
+                    "surface-variant": "#e5e2de",
+                    "on-tertiary-container": "#fffbff",
+                    "on-primary-container": "#fffbff",
+                    "tertiary-container": "#767474",
+                    "inverse-on-surface": "#f3f0ec",
+                    "on-primary-fixed": "#3a0a00",
+                    "secondary-fixed-dim": "#6fd7d4",
+                    "on-background": "#1c1c1a",
+                    "surface-tint": "#ae3100",
+                    "surface-container-high": "#ebe8e4",
+                    "tertiary": "#5d5b5b",
+                    "tertiary-fixed-dim": "#c9c6c5",
+                    "on-secondary-fixed": "#00201f",
+                    "on-secondary-fixed-variant": "#00504e",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#dcdad6",
+                    "surface-container-low": "#f6f3ef",
+                    "surface-container": "#f0ede9",
+                    "surface-container-highest": "#e5e2de",
+                    "error": "#ba1a1a",
+                    "background": "#fcf9f5",
+                    "outline-variant": "#e3bfb4",
+                    "on-surface-variant": "#5a4139",
+                    "error-container": "#ffdad6",
+                    "outline": "#8e7068",
+                    "surface": "#fcf9f5",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#006e6d",
+                    "secondary-container": "#8af1ed"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Work Sans"],
+                    "label": ["Work Sans"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Work Sans', sans-serif; }
+        h1, h2, h3 { font-family: 'Noto Serif', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        textarea:focus { outline: none; border-color: #aa3000; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar (Authority: JSON & Design System) -->
+<aside class="h-screen w-64 border-r border-[#ebe8e4] dark:border-[#333333] bg-[#f6f3ef] dark:bg-[#1c1c1a] flex flex-col py-6 sticky top-0 shrink-0">
+<div class="px-6 mb-10">
+<h1 class="font-serif font-black text-xl text-[#1c1c1a]">Mizan AI</h1>
+<p class="font-sans text-sm font-medium text-[#aa3000]">Legal Assistant</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center px-6 py-3 text-[#aa3000] bg-[#ebe8e4] dark:bg-[#333333] font-bold rounded-r-full transition-all translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="font-sans text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#1c1c1a]/70 dark:text-[#fcf9f5]/70 hover:bg-[#ebe8e4] dark:hover:bg-[#333333] transition-all" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="history">history</span>
+<span class="font-sans text-sm font-medium">History</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#1c1c1a]/70 dark:text-[#fcf9f5]/70 hover:bg-[#ebe8e4] dark:hover:bg-[#333333] transition-all" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="font-sans text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="px-6 mt-auto">
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl">
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover" data-alt="professional portrait of a lawyer in a dark suit with a clean background, soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBGUJJHYG7G_gF20gT8jTNxANcAb9K1tYBu8F6gluHORw7gIgehc21Ck7f_HbBZwjwBrHLjOhK9b-fqvltc0BUy-Jjzr0g6QYxbdKDYHdzgw4DWxE92tfAY06OEy2l1g8NCaqiHe6QIbhBjbDMNxJkehkpW9PB2CYHeMScY1MDgY6zWdZPT6hHlG7l_rao172oWyzawGGyTGPKuAmzWT8rKot2Me61QSj7fPlW2dG3rlay78NbjBymIyaPmlHCvqg_ofU_PKS__1aD"/>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Maître Dupont</p>
+<p class="text-[10px] text-on-surface/60">Partner</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- Header / Greeting -->
+<header class="px-12 pt-12 pb-8">
+<h2 class="text-4xl font-bold tracking-tight text-on-surface mb-2">Bonjour, Maître</h2>
+<p class="text-on-surface/60 max-w-2xl font-light">Prêt pour une analyse juridique approfondie. Décrivez votre situation ou déposez vos documents pour commencer l'extraction de données par IA.</p>
+</header>
+<!-- Drag & Drop & Text Area Component -->
+<section class="px-12 mb-12">
+<div class="group relative overflow-hidden bg-surface-container-low rounded-2xl p-1 w-full transition-all duration-300 hover:shadow-xl hover:shadow-primary/5">
+<div class="relative bg-surface-container-lowest border-2 border-dashed border-outline-variant/30 rounded-xl p-8 transition-colors group-hover:border-primary/40">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+<!-- Upload Side -->
+<div class="flex flex-col items-center justify-center py-8 border-b lg:border-b-0 lg:border-r border-outline-variant/20 h-full">
+<div class="mb-6 relative">
+<div class="absolute -inset-4 bg-primary/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<span class="material-symbols-outlined text-6xl text-primary relative" data-icon="upload_file">upload_file</span>
+</div>
+<h3 class="text-2xl font-serif font-bold text-on-surface mb-2">Analyse Immédiate</h3>
+<p class="text-on-surface/50 text-sm mb-8 text-center px-4">Glissez-déposez vos fichiers PDF ici ou <span class="text-primary font-semibold underline cursor-pointer">parcourez votre ordinateur</span></p>
+<div class="flex flex-wrap justify-center gap-3">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-full border border-outline-variant/10">
+<span class="material-symbols-outlined text-sm text-on-surface/40" data-icon="check_circle">check_circle</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface/60">Contrats</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-full border border-outline-variant/10">
+<span class="material-symbols-outlined text-sm text-on-surface/40" data-icon="check_circle">check_circle</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-on-surface/60">Statuts</span>
+</div>
+</div>
+</div>
+<!-- Text Input Side -->
+<div class="flex flex-col h-full py-2">
+<label class="block text-sm font-bold text-on-surface/70 mb-3 uppercase tracking-wider" for="situation-description">Décrivez la situation juridique</label>
+<textarea class="flex-1 min-h-[200px] w-full p-4 bg-surface-container-low/50 border border-outline-variant/20 rounded-xl text-on-surface text-sm font-sans resize-none transition-all placeholder:text-on-surface/30 focus:ring-1 focus:ring-primary/20" id="situation-description" placeholder="Saisissez ici les faits ou les questions juridiques spécifiques..."></textarea>
+<div class="mt-4 flex justify-end">
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full text-sm font-bold shadow-md hover:bg-primary/90 transition-all flex items-center gap-2">
+<span>Analyser le texte</span>
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Documents Table -->
+<section class="px-12 pb-20">
+<div class="flex items-baseline justify-between mb-6">
+<h3 class="text-2xl font-bold">Documents récents</h3>
+<a class="text-sm font-medium text-primary hover:underline transition-all" href="#">Voir tout l'historique</a>
+</div>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-outline-variant/10">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 border-b border-outline-variant/10">
+<th class="px-8 py-5 text-[11px] font-bold uppercase tracking-widest text-on-surface/40">Nom du document</th>
+<th class="px-8 py-5 text-[11px] font-bold uppercase tracking-widest text-on-surface/40">Date</th>
+<th class="px-8 py-5 text-[11px] font-bold uppercase tracking-widest text-on-surface/40">Statut</th>
+<th class="px-8 py-5 text-[11px] font-bold uppercase tracking-widest text-on-surface/40 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div>
+<p class="font-medium text-on-surface group-hover:text-primary transition-colors">Contrat_Prestation_v2.pdf</p>
+<p class="text-[11px] text-on-surface/40 italic">ID: 98234-FR</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface/70">Aujourd'hui, 14:20</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold uppercase tracking-tighter">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                    Analysé
+                                </span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-on-surface/30 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div>
+<p class="font-medium text-on-surface group-hover:text-primary transition-colors">Accord_Confidentialite_TechCorp.pdf</p>
+<p class="text-[11px] text-on-surface/40 italic">ID: 98211-US</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface/70">Hier, 10:45</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container text-[11px] font-bold uppercase tracking-tighter">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                    Action requise
+                                </span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-on-surface/30 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-5">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-primary/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div>
+<p class="font-medium text-on-surface group-hover:text-primary transition-colors">Statuts_Societe_Nouvelle.pdf</p>
+<p class="text-[11px] text-on-surface/40 italic">ID: 98199-FR</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-5 text-sm text-on-surface/70">24 Mai 2024</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-[11px] font-bold uppercase tracking-tighter">
+<span class="w-1.5 h-1.5 rounded-full bg-on-surface-variant"></span>
+                                    En attente
+                                </span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-on-surface/30 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="bg-surface-container-low/30 px-8 py-4 text-center">
+<p class="text-[11px] uppercase tracking-widest font-bold text-on-surface/40">Fin de la liste</p>
+</div>
+</div>
+</section>
+<!-- Footer (Authority: JSON) -->
+<footer class="w-full border-t border-[#ebe8e4] bg-[#fcf9f5] flex flex-col items-center gap-8 py-12 px-8 mt-auto">
+<div class="flex flex-col items-center gap-4">
+<div class="font-serif font-bold text-[#1c1c1a]">Mizan Legal AI</div>
+<div class="flex gap-8">
+<a class="font-sans text-xs uppercase tracking-widest text-[#1c1c1a]/60 hover:text-[#aa3000] underline transition-all" href="#">Mentions Légales</a>
+<a class="font-sans text-xs uppercase tracking-widest text-[#1c1c1a]/60 hover:text-[#aa3000] underline transition-all" href="#">Confidentialité</a>
+<a class="font-sans text-xs uppercase tracking-widest text-[#1c1c1a]/60 hover:text-[#aa3000] underline transition-all" href="#">Contact</a>
+</div>
+</div>
+<p class="font-sans text-xs uppercase tracking-widest text-[#1c1c1a]/60 opacity-80">© 2024 Mizan Legal AI. All rights reserved.</p>
+</footer>
+</main>
+</body></html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mizan Legal AI - Analyse de Document</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#484646",
+                    "inverse-primary": "#ffb59f",
+                    "inverse-surface": "#31302e",
+                    "on-tertiary-fixed": "#1c1b1b",
+                    "surface-bright": "#fcf9f5",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1c1c1a",
+                    "tertiary-fixed": "#e6e1e1",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#d2420d",
+                    "on-error": "#ffffff",
+                    "primary": "#aa3000",
+                    "primary-fixed": "#ffdbd0",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary": "#006a68",
+                    "primary-fixed-dim": "#ffb59f",
+                    "secondary-fixed": "#8df3f0",
+                    "on-primary-fixed-variant": "#852300",
+                    "surface-variant": "#e5e2de",
+                    "on-tertiary-container": "#fffbff",
+                    "on-primary-container": "#fffbff",
+                    "tertiary-container": "#767474",
+                    "inverse-on-surface": "#f3f0ec",
+                    "on-primary-fixed": "#3a0a00",
+                    "secondary-fixed-dim": "#6fd7d4",
+                    "on-background": "#1c1c1a",
+                    "surface-tint": "#ae3100",
+                    "surface-container-high": "#ebe8e4",
+                    "tertiary": "#5d5b5b",
+                    "tertiary-fixed-dim": "#c9c6c5",
+                    "on-secondary-fixed": "#00201f",
+                    "on-secondary-fixed-variant": "#00504e",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#dcdad6",
+                    "surface-container-low": "#f6f3ef",
+                    "surface-container": "#f0ede9",
+                    "surface-container-highest": "#e5e2de",
+                    "error": "#ba1a1a",
+                    "background": "#fcf9f5",
+                    "outline-variant": "#e3bfb4",
+                    "on-surface-variant": "#5a4139",
+                    "error-container": "#ffdad6",
+                    "outline": "#8e7068",
+                    "surface": "#fcf9f5",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#006e6d",
+                    "secondary-container": "#8af1ed"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Work Sans"],
+                    "label": ["Work Sans"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Work Sans', sans-serif; }
+        h1, h2, h3, .serif-font { font-family: 'Noto Serif', serif; }
+        .glass-header { background: rgba(252, 249, 245, 0.8); backdrop-filter: blur(20px); }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#fcf9f5]/80 backdrop-blur-md dark:bg-[#1c1c1a]/80">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-bold font-serif text-[#1c1c1a] dark:text-[#fcf9f5]">Mizan Legal AI</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-serif text-lg tracking-tight text-[#1c1c1a] dark:text-[#fcf9f5] hover:text-[#aa3000] transition-colors duration-300" href="#">Citoyens</a>
+<a class="font-serif text-lg tracking-tight text-[#1c1c1a] dark:text-[#fcf9f5] hover:text-[#aa3000] transition-colors duration-300" href="#">Entreprises</a>
+<a class="font-serif text-lg tracking-tight text-[#1c1c1a] dark:text-[#fcf9f5] hover:text-[#aa3000] transition-colors duration-300" href="#">Tarifs</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-6 py-2 rounded-md font-medium text-[#aa3000] transition-all hover:bg-surface-container-high">Connexion</button>
+<button class="px-6 py-2 rounded-md bg-primary text-on-primary font-medium hover:bg-primary-container transition-all">S'inscrire</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-12 px-8 max-w-[1600px] mx-auto min-h-screen">
+<!-- Alert Banner -->
+<div class="mb-8 overflow-hidden rounded-xl bg-error-container border-l-8 border-error flex items-center p-6 gap-6 shadow-sm">
+<div class="p-3 bg-error rounded-full text-white shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex-1">
+<h3 class="font-headline font-bold text-lg text-on-error-container uppercase tracking-tight">Alerte Fraude Détectée</h3>
+<p class="text-on-error-container/80 text-sm">Des incohérences critiques ont été identifiées dans la structure des clauses 14.b et l'identité de l'émetteur. Prudence recommandée.</p>
+</div>
+<button class="text-on-error-container font-bold text-sm underline hover:opacity-70">Détails techniques</button>
+</div>
+<div class="flex flex-col lg:flex-row gap-8 h-full">
+<!-- Left Column: PDF Preview (40%) -->
+<aside class="w-full lg:w-[40%] flex flex-col gap-4">
+<div class="flex items-center justify-between px-4">
+<h2 class="font-headline text-xl font-bold">Document Source</h2>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+</div>
+<div class="relative bg-surface-container-low aspect-[3/4] rounded-xl overflow-hidden border border-outline-variant/20 shadow-inner group">
+<img class="w-full h-full object-cover opacity-60 mix-blend-multiply transition-transform duration-700 group-hover:scale-105" data-alt="high quality scanned legal document on a desk with a warm office ambient light and shallow depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBRPKLNG5GkmUQa7BpckDhwkUpQmS8g0u7dG6vnDMNnjXK_WAn5g7t-M8L1cjZ5ZV_qgYE09IxmVPY5RBmbLgik4C6Y3vxqW88MjMpvCmCVsq5I6O4m30kxuJ6XJEZ0p5wCtuYB8aG1dP9_JdhTZqKZFbI-boekCdedPZ2Vpxgb8mxOZ4TsKZGhRnOD_Ai6WN28HV243ZHmuyXT14Q9MYa3YmB8BcbyMK6gyaEsOW3OcuqqaUsvazmp_lo088KrFLaOB5ZjI5eL19y4"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center">
+<div class="w-20 h-20 bg-white/50 backdrop-blur-md rounded-full flex items-center justify-center mb-6 shadow-lg">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">description</span>
+</div>
+<p class="font-headline text-lg font-semibold text-on-surface">Contrat_Bail_Residence_2024.pdf</p>
+<p class="text-sm text-on-surface/60 mt-2">Document de 12 pages • Scanné avec succès</p>
+<div class="mt-8 flex flex-col gap-2 w-full max-w-xs">
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%]"></div>
+</div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface/40 font-bold">Extraction OCR active</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Column: AI Analysis (60%) -->
+<section class="w-full lg:w-[60%] flex flex-col gap-8">
+<!-- Résumé -->
+<article class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h2 class="font-headline text-2xl font-black tracking-tight">Résumé de l'analyse</h2>
+</div>
+<p class="text-lg leading-relaxed text-on-surface/80 font-light">
+                        Ce document est un <span class="font-bold text-on-surface">Contrat de Bail de Résidence Principale</span> portant sur le bien situé à Casablanca. L'analyse révèle une conformité globale aux lois en vigueur, à l'exception d'une clause d'indexation du loyer qui dépasse les seuils légaux autorisés. La durée est fixée à 3 ans, renouvelable tacitement.
+                    </p>
+</article>
+<!-- Droits & Devoirs -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-low p-8 rounded-xl">
+<h3 class="font-headline text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">gavel</span>
+                            Vos Droits
+                        </h3>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">check_circle</span>
+<span class="text-sm text-on-surface/80">Droit à un logement décent et sécurisé dès la remise des clés.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">check_circle</span>
+<span class="text-sm text-on-surface/80">Possibilité de résiliation avec un préavis réduit de 1 mois en cas de mutation.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-secondary text-sm mt-1">check_circle</span>
+<span class="text-sm text-on-surface/80">Maintien dans les lieux en cas de vente du bien immobilier.</span>
+</li>
+</ul>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl">
+<h3 class="font-headline text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">priority_high</span>
+                            Vos Devoirs
+                        </h3>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">error_outline</span>
+<span class="text-sm text-on-surface/80">Paiement du loyer et des charges avant le 5 de chaque mois.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">error_outline</span>
+<span class="text-sm text-on-surface/80">Entretien courant et réparations locatives à votre charge.</span>
+</li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-primary text-sm mt-1">error_outline</span>
+<span class="text-sm text-on-surface/80">Obligation de souscrire à une assurance habitation multirisque.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Étapes à suivre -->
+<article class="bg-on-surface text-surface-bright p-10 rounded-xl">
+<h3 class="font-headline text-2xl font-bold mb-8">Prochaines Étapes Recommandées</h3>
+<div class="space-y-4">
+<label class="group flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 cursor-pointer transition-all border border-white/10">
+<input class="w-6 h-6 rounded border-white/20 bg-transparent text-primary focus:ring-primary" type="checkbox"/>
+<div class="flex-1">
+<p class="font-bold text-sm uppercase tracking-wider">Étape 01</p>
+<p class="text-surface-bright/70 text-sm">Contester formellement la clause d'indexation (Art. 22).</p>
+</div>
+</label>
+<label class="group flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 cursor-pointer transition-all border border-white/10">
+<input class="w-6 h-6 rounded border-white/20 bg-transparent text-primary focus:ring-primary" type="checkbox"/>
+<div class="flex-1">
+<p class="font-bold text-sm uppercase tracking-wider">Étape 02</p>
+<p class="text-surface-bright/70 text-sm">Demander une copie de l'attestation de performance énergétique.</p>
+</div>
+</label>
+<label class="group flex items-center gap-4 p-4 rounded-lg bg-white/5 hover:bg-white/10 cursor-pointer transition-all border border-white/10">
+<input class="w-6 h-6 rounded border-white/20 bg-transparent text-primary focus:ring-primary" type="checkbox"/>
+<div class="flex-1">
+<p class="font-bold text-sm uppercase tracking-wider">Étape 03</p>
+<p class="text-surface-bright/70 text-sm">Prendre rendez-vous pour l'état des lieux contradictoire.</p>
+</div>
+</label>
+</div>
+<div class="mt-10 flex gap-4">
+<button class="flex-1 py-4 bg-primary text-on-primary rounded-md font-bold uppercase tracking-widest text-xs hover:bg-primary-container transition-all">Générer un courrier recommandé</button>
+<button class="px-6 py-4 border border-white/30 rounded-md font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-all">Parler à un avocat</button>
+</div>
+</article>
+<!-- Footer Component Inside Canvas for context -->
+<footer class="mt-auto pt-12">
+<div class="flex flex-col items-center gap-8 py-12 px-8 w-full bg-[#fcf9f5] dark:bg-[#1c1c1a] border-t border-[#ebe8e4] dark:border-[#333333]">
+<div class="font-serif font-bold text-[#1c1c1a]">Mizan Legal AI</div>
+<div class="flex gap-8">
+<a class="font-sans text-xs uppercase tracking-widest text-[#1c1c1a]/60 dark:text-[#fcf9f5]/60 hover:text-[#aa3000] underline" href="#">Mentions Légales</a>
+<a class="font-sans text-xs uppercase tracking-widest text-[#1c1c1a]/60 dark:text-[#fcf9f5]/60 hover:text-[#aa3000] underline" href="#">Confidentialité</a>
+<a class="font-sans text-xs uppercase tracking-widest text-[#1c1c1a]/60 dark:text-[#fcf9f5]/60 hover:text-[#aa3000] underline" href="#">Contact</a>
+</div>
+<p class="font-sans text-xs uppercase tracking-widest text-[#1c1c1a]/60 dark:text-[#fcf9f5]/60">© 2024 Mizan Legal AI. All rights reserved.</p>
+</div>
+</footer>
+</section>
+</div>
+</main>
+<!-- Floating Action for AI Assistance -->
+<div class="fixed bottom-8 right-8 z-40">
+<button class="w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</button>
+</div>
+</body></html>
