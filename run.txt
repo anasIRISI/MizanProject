@@ -1,0 +1,14 @@
+Guide de lancement Mizan
+
+Les instructions complètes et les prérequis figurent dans README.md.
+
+Backend : définir DB_USERNAME, DB_PASSWORD, GEMINI_API_KEY et JWT_SECRET,
+puis lancer « mvn spring-boot:run » dans mizan-backend/.
+Le secret JWT doit être aléatoire et contenir au moins 32 octets.
+Le backend ne charge pas automatiquement les fichiers .env.
+
+Frontend : dans mizan-frontend/, copier .env.example vers .env.local,
+puis lancer « npm ci » et « npm run dev ».
+
+Créer un compte neuf pour tester l'authentification, puis analyser un
+document de démonstration sans données personnelles.
